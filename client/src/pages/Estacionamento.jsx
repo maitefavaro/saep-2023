@@ -52,14 +52,16 @@ const Estacionamento = () => {
         setCssEsc(value)
     }
 
-    const exibirModal = (id) => {
+    const exibirModal = (id, boolValue) => {
         // console.log('exibir modal')
         // console.log(modalArea)
-        setModalArea(!modalArea)
-        setArea(id)
-        axios.get("https://5000-iguoliveira-saep2023-uohyutxa50m.ws-us98.gitpod.io/alocacao/" + id).then((response) => {
-            setVeiculos(response.data)
-        })
+        if (boolValue) {
+            setModalArea(!modalArea)
+            setArea(id)
+            axios.get("https://5000-iguoliveira-saep2023-uohyutxa50m.ws-us98.gitpod.io/alocacao/" + id).then((response) => {
+                setVeiculos(response.data)
+            })
+        }
     }
 
     const vender = (id, veiculo) => {
@@ -127,46 +129,45 @@ const Estacionamento = () => {
 
             <div className='bloco-8-9-11'>
                 <div className='bloco-11'>
-                    <div className={'galpao es-8 ' + (pesquisar(8) > 0 ? 'active' : null)} onClick={() => exibirModal(11)}>
-                        11
+                    <div className={'galpao es-8 ' + (pesquisar(11) > 0 ? 'active' : null)} onClick={() => exibirModal(11, pesquisar(11) > 0)}>
+                        <span className='text-black2'>11</span>
                     </div>
                 </div>
                 <div className='bloco-89'>
-                    <div className={'galpao es-8 ' + (pesquisar(8) > 0 ? 'active' : null)} onClick={() => exibirModal(8)}>
-                        8
+                    <div className={'galpao es-8 ' + (pesquisar(8) > 0 ? 'active' : null)} onClick={() => exibirModal(8, pesquisar(8) > 0)}>
+                        <span className='text-black2'>8</span>
                     </div>
-                    <div className={'galpao es-9 ' + (pesquisar(9) > 0 ? 'active' : null)} onClick={() => exibirModal(9)}>
-                        9
+                    <div className={'galpao es-9 ' + (pesquisar(9) > 0 ? 'active' : null)} onClick={() => exibirModal(9, pesquisar(9) > 0)}>
+                        <span className='text-black2'>9</span>
                     </div>
                 </div>
             </div><div className='base'>
-                <div className={'galpao es-7 ' + (pesquisar(7) > 0 ? 'active' : null)} onClick={() => exibirModal(7)}>
-                    7
+                <div className={'galpao es-7 ' + (pesquisar(7) > 0 ? 'active' : null)} onClick={() => exibirModal(7, pesquisar(7) > 0)}>
+                    <span className='text-black2'>7</span>
                 </div>
-                <div className={'galpao es-4 ' + (pesquisar(4) > 0 ? 'active' : null)} onClick={() => exibirModal(4)}>
-                    4
+                <div className={'galpao es-4 ' + (pesquisar(4) > 0 ? 'active' : null)} onClick={() => exibirModal(4, pesquisar(4) > 0)}>
+                    <span className='text-black2'>4</span>
                 </div>
                 <div className={'galpao es-1 ' + (pesquisar(1) > 0 ? 'active' : null)}
-                    onClick={() => exibirModal(1)}>
-                    1
+                    onClick={() => exibirModal(1, pesquisar(1) > 0)}>
+                    <span className='text-black2'>1</span>
                 </div>
-                <div className={'galpao es-3 ' + (pesquisar(3) > 0 ? 'active' : null)} onClick={() => exibirModal(3)}>
-                    3
+                <div className={'galpao es-3 ' + (pesquisar(3) > 0 ? 'active' : null)} onClick={() => exibirModal(3, pesquisar(3) > 0)}>
+                    <span className='text-black2'>3</span>
                 </div>
-                <div className={'galpao es-2 ' + (pesquisar(2) > 0 ? 'active' : null)} onClick={() => exibirModal(2)}>
-                    2
-
+                <div className={'galpao es-2 ' + (pesquisar(2) > 0 ? 'active' : null)} onClick={() => exibirModal(2, pesquisar(2) > 0)}>
+                    <span className='text-black2'>2</span>
                 </div>
-                <div className={'galpao es-5 ' + (pesquisar(5) > 0 ? 'active' : null)} onClick={() => exibirModal(5)}>
-                    5
+                <div className={'galpao es-5 ' + (pesquisar(5) > 0 ? 'active' : null)} onClick={() => exibirModal(5, pesquisar(5) > 0)}>
+                    <span className='text-black2'>5</span>
                 </div>
             </div>
             <div className='direita'>
-                <div className={'galpao es-6 ' + (pesquisar(6) > 0 ? 'active' : null)} onClick={() => exibirModal(6)}>
-                    6
+                <div className={'galpao es-6 ' + (pesquisar(6) > 0 ? 'active' : null)} onClick={() => exibirModal(6, pesquisar(6) > 0)}>
+                    <span className='text-black2'>6</span>
                 </div>
-                <div className={'galpao es-10 ' + (pesquisar(10) > 0 ? 'active' : null)} onClick={() => exibirModal(10)}>
-                    10
+                <div className={'galpao es-10 ' + (pesquisar(10) > 0 ? 'active' : null)} onClick={() => exibirModal(10, pesquisar(10) > 0)}>
+                    <span className='text-black2'>10</span>
                 </div>
             </div>
 
