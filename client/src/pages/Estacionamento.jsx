@@ -3,7 +3,7 @@ import '../assets/css/estacionamento.css'
 import axios from 'axios';
 
 const Estacionamento = () => {
-    const [item6, setItem6] = useState([0, 1, 2, ])
+    const [item6, setItem6] = useState([0, 1, 2,])
     const [alocados, setAlocados] = useState([]);
     const [veiculos, setVeiculos] = useState([]);
     const [veiculo, setVeiculo] = useState();
@@ -21,14 +21,14 @@ const Estacionamento = () => {
     }, [])
 
     const carregarAlocacao = () => {
-        axios.get("http://127.0.0.1:5000/alocacao").then((response) => {
-            console.log(response)       
+        axios.get("https://5000-iguoliveira-saep2023-uohyutxa50m.ws-us98.gitpod.io/alocacao").then((response) => {
+            console.log(response)
             setAlocados(response.data)
         })
     }
     const carregarClientes = () => {
-        axios.get("http://127.0.0.1:5000/clientes").then((response) => {
-            console.log(response)       
+        axios.get("https://5000-iguoliveira-saep2023-uohyutxa50m.ws-us98.gitpod.io/clientes").then((response) => {
+            console.log(`CLIENTES: ${JSON.stringify(response.data)}`)
             setClientes(response.data)
         })
     }
@@ -37,7 +37,7 @@ const Estacionamento = () => {
         if (alocados.length > 0) {
             return alocados.find(x => x.area === id)?.qtd
         }
-        else{
+        else {
             return null
         }
     }
@@ -55,8 +55,8 @@ const Estacionamento = () => {
         console.log(modalArea)
         setModalArea(!modalArea)
         setArea(id)
-        axios.get("http://127.0.0.1:5000/alocacao/" + id).then((response) => {
-            console.log(response)       
+        axios.get("https://5000-iguoliveira-saep2023-uohyutxa50m.ws-us98.gitpod.io/alocacao/" + id).then((response) => {
+            console.log(response)
             setVeiculos(response.data)
             console.log(veiculos)
         })
@@ -66,25 +66,25 @@ const Estacionamento = () => {
         setModalArea(false)
         setModalVenda(true)
         setVeiculo(veiculo)
-        axios.get("http://127.0.0.1:5000/concessionaria/" + id).then((response) => {
-            console.log(response)       
+        axios.get("https://5000-iguoliveira-saep2023-uohyutxa50m.ws-us98.gitpod.io/concessionaria/" + id).then((response) => {
+            console.log(response)
             setCSS(response.data)
         })
 
 
     }
 
-    return ( 
+    return (
         <>
 
-            <div className={ modalArea ? 'modal-area block' : 'modal-area hidden' } >
+            <div className={modalArea ? 'modal-area block' : 'modal-area hidden'} >
                 <div className='modal'>
                     Área {idAreaSelecionada}
 
                     {veiculos.length > 0 ? (
                         veiculos.map((item) => (
                             <div>
-                                Modelo: {item.Modelo} | Preço { item.Preco}
+                                Modelo: {item.Modelo} | Preço {item.Preco}
                                 <button type='button' onClick={() => vender(item.id, item.Modelo)}>
                                     Vender
                                 </button>
@@ -93,26 +93,26 @@ const Estacionamento = () => {
                     ) : null}
                 </div>
             </div>
-            <div className={ modalVenda ? 'modal-area block' : 'modal-area hidden' } >
+            <div className={modalVenda ? 'modal-area block' : 'modal-area hidden'} >
                 <div className='modal column'>
                     {veiculo}
 
                     <div>
-                    <select onChange={selecionarCliente}>
-                        <option value=""> -- Selecionar Cliente -- </option>
-                        {clientes.map((item) => (
-                        <option value={item.id}>{item.Nome}</option>
-                        ))}
-                    </select>
+                        <select onChange={selecionarCliente}>
+                            <option value=""> -- Selecionar Cliente -- </option>
+                            {clientes.map((item) => (
+                                <option value={item.id}>{item.Nome}</option>
+                            ))}
+                        </select>
 
-                     <select onChange={selecionarCSS}>
-                        <option value=""> -- Selecionar Concessionária -- </option>
-                        {concessionarias.map((item) => (
-                        <option value={item.id}>{item.nome}</option>
-                        ))}
-                    </select>                   
+                        <select onChange={selecionarCSS}>
+                            <option value=""> -- Selecionar Concessionária -- </option>
+                            {concessionarias.map((item) => (
+                                <option value={item.id}>{item.nome}</option>
+                            ))}
+                        </select>
 
-                    <button>Confirmar</button>
+                        <button>Confirmar</button>
 
 
                     </div>
@@ -135,40 +135,40 @@ const Estacionamento = () => {
                     </div>
                 </div>
             </div><div className='base'>
-                    <div className={'galpao es-7 ' + (pesquisar(7) > 0 ? 'active' : null)}>
-                        7
-                    </div>
-                    <div className={'galpao es-4 ' + (pesquisar(4) > 0 ? 'active' : null)}>
-                        4
-                    </div>
-                    <div className={'galpao es-1 ' + (pesquisar(1) > 0 ? 'active' : null)} 
+                <div className={'galpao es-7 ' + (pesquisar(7) > 0 ? 'active' : null)}>
+                    7
+                </div>
+                <div className={'galpao es-4 ' + (pesquisar(4) > 0 ? 'active' : null)}>
+                    4
+                </div>
+                <div className={'galpao es-1 ' + (pesquisar(1) > 0 ? 'active' : null)}
                     onClick={() => exibirModal(1)}>
-                        1
-                    </div>
-                    <div className={'galpao es-3 ' + (pesquisar(3) > 0 ? 'active' : null)}>
-                        3
-                    </div>
-                    <div className={'galpao es-2 ' + (pesquisar(2) > 0 ? 'active' : null)} >
-                        2
+                    1
+                </div>
+                <div className={'galpao es-3 ' + (pesquisar(3) > 0 ? 'active' : null)}>
+                    3
+                </div>
+                <div className={'galpao es-2 ' + (pesquisar(2) > 0 ? 'active' : null)} >
+                    2
 
-                    </div>
-                    <div className={'galpao es-5 ' + (pesquisar(5) > 0 ? 'active' : null)} >
-                        5
-                    </div>
                 </div>
-                <div className='direita'>
-                    <div className={'galpao es-6 ' + (pesquisar(6) > 0 ? 'active' : null)} 
-                        onClick={() => alert("funcionou")}
-                    >
-                        6 
-                    </div>
-                    <div className={'galpao es-10 ' + (pesquisar(10) > 0 ? 'active' : null)}>
-                        10
-                    </div>
+                <div className={'galpao es-5 ' + (pesquisar(5) > 0 ? 'active' : null)} >
+                    5
                 </div>
-        
+            </div>
+            <div className='direita'>
+                <div className={'galpao es-6 ' + (pesquisar(6) > 0 ? 'active' : null)}
+                    onClick={() => alert("funcionou")}
+                >
+                    6
+                </div>
+                <div className={'galpao es-10 ' + (pesquisar(10) > 0 ? 'active' : null)}>
+                    10
+                </div>
+            </div>
+
         </>
-     );
+    );
 }
- 
+
 export default Estacionamento;
