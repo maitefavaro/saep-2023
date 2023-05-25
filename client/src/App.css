@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -37,11 +40,16 @@
   padding: 2em;
 }
 
+.text-black2 {
+  color: black;
+}
+
 .read-the-docs {
   color: #888;
 }
-.modal-area{
-  position:absolute !important;
+
+.modal-area {
+  position: absolute !important;
   background-color: #fffffff2;
   z-index: 9999999999;
   width: 100%;
@@ -50,24 +58,26 @@
   top: 0;
 }
 
-.modal{
-  background:#fff;
-  border:1px solid #000;
+.modal {
+  background: #fff;
+  border: 1px solid #000;
   width: 500px;
   margin: 200px auto;
   padding: 20px;
 }
+
 .modal button {
   background: #323232;
   color: #fff;
 }
-.modal div{
+
+.modal div {
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
 }
 
-.column div{
+.column div {
   flex-direction: column;
 }
 
